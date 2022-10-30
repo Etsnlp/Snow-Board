@@ -12,8 +12,10 @@ public class CrashDetector : MonoBehaviour
    {
       if(other.tag == "Ground")
       {
+        FindObjectOfType<PlayerController>().StopControl();
         crashEffect.Play();
-       Invoke("ReloadScene", delayTime);
+        GetComponent<AudioSource>().Play();
+        Invoke("ReloadScene", delayTime);
       }
     
    }

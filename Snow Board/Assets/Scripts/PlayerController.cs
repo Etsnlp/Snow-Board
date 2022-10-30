@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float normalSpeed = 12f;
     Rigidbody2D rb2d;
     SurfaceEffector2D surfaceEffector;
+    bool canMove = true;
 
     void Start()
     {
@@ -19,8 +20,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(canMove)
+        {
         RotationControl();
         RespondToBoost();
+        }
+    }
+
+    public void StopControl()
+    {
+        canMove = false;
+        surfaceEffector.enabled = !surfaceEffector.enabled;
     }
 
     void RotationControl()
